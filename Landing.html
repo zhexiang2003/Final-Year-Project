@@ -41,7 +41,7 @@
                 <a class="navbar-brand" href="#">
                     <img src="Images/University-logo.svg" alt="University Logo" class="university-logo">
                 </a>
-                
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -76,6 +76,37 @@
         </nav>
 
     </header>
+
+    <div class="overlay-background">
+        <div class="weather-info">
+            <h1 class="location"></h1>
+            <h1 class="temperature"></h1>
+            <h1 class="time"></h1>
+            <h1 class="date"></h1>
+        </div>
+    </div>
+
+    <div id="hourlyWeatherCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+
+                <div class="container-fluid hourlyWeatherDisplay">
+                    
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
 </body>
 
 </html>

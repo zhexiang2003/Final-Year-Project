@@ -1,9 +1,13 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Circular", Arial, sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
+    color: #10263B;
 }
 
 header {
@@ -56,6 +60,23 @@ nav.navbar {
     font-size: 1.25rem;
 }
 
+.overlay-background {
+    background-image: url("Images/Sunny Day Kuala Lumpur(1).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - var(--navbar-height));
+    width: 100vw;
+    max-width: 100%; 
+    /* background-attachment: fixed; */
+}
+
+.weather-info {
+    position: relative;
+    padding: 2rem;
+    bottom: -30vh;
+    color: #10263B;
+}
+
 @media (max-width: 992px) {
     nav.navbar {
         padding-top: .3125rem;
@@ -81,6 +102,10 @@ nav.navbar {
         width: 176px;
         aspect-ratio: auto 176 / 65;
         height: 65px;
+    }
+
+    .weather-info {
+        text-align: center;
     }
 }
 
