@@ -77,6 +77,24 @@ nav.navbar {
     color: #10263B;
 }
 
+.container-fluid.hourlyWeatherDisplay {
+    display: flex;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    transition: 1s;
+    justify-content: center;
+}
+
+.container.hourly-weather {
+    position: relative;
+    display: inline-block;
+    width: 25%;
+    flex-shrink: 0;
+    white-space: normal;
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
+}
+
 @media (max-width: 992px) {
     nav.navbar {
         padding-top: .3125rem;
