@@ -31,9 +31,10 @@ img {
     width: 255px;
 }
 
-nav.navbar, a.navbar-brand {
+nav.navbar,
+a.navbar-brand {
     padding: 0;
-    
+
 }
 
 nav.navbar {
@@ -52,7 +53,7 @@ nav.navbar {
     left: -12px;
     margin-right: 0px;
     margin-bottom: 10px;
-} 
+}
 
 .nav-link {
     margin-right: 1.2rem;
@@ -66,7 +67,7 @@ nav.navbar {
     background-size: cover;
     height: calc(100vh - var(--navbar-height));
     width: 100vw;
-    max-width: 100%; 
+    max-width: 100%;
     /* background-attachment: fixed; */
 }
 
@@ -95,6 +96,142 @@ nav.navbar {
     margin-right: 1.8rem;
 }
 
+.accordion {
+    width: 80%;
+    max-width: 100%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-fluid.hourly-weather {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.weather-hour {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 1.2rem;
+}
+
+.bi {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.hourly-temperature {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 1rem;
+}
+
+.temp-feels-like {
+    margin-left: auto;
+    margin-right: 2.5rem;
+    margin-bottom: 0;
+}
+
+.chance-of-prep {
+    margin-bottom: 0;
+}
+
+.chance-of-prep-group {
+    display: flex;
+    margin-left: auto;
+    margin-right: 0;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bi.bi-droplet {
+    margin-right: 0;
+}
+
+.weather-condition-text {
+    margin-left: 1.7rem;
+    margin-bottom: 0;
+}
+
+.hourly-weather-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.weather-value {
+    margin-left: auto;
+}
+
+p.hourly-weather-info,
+p.weather-value {
+    margin-bottom: 0;
+}
+
+.row p.hourly-weather-info {
+    border-bottom: 1px solid #000;
+    padding: 11px 0 10px;
+}
+
+.row.last-row p.hourly-weather-info {
+    border-bottom: 0px solid;
+}
+
+.accordion-body {
+    padding-top: 5px;
+}
+
+.accordion-button {
+    background-color: white;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #10263B !important;
+    box-shadow: none !important;
+    color: white !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+    color: white !important;
+}
+
+h5.weather-description,
+h5.weather-description-text.d-sm-none {
+    margin-top: 8px;
+}
+
+/* .accordion-button::after {
+    font-family: "bootstrap-icons" !important;
+    content: "\f282" !important; 
+    float: right !important;
+    transform-origin: center !important;
+}
+
+.accordion-button::after {
+    background-image: none !important;
+}
+
+.accordion-button.collapsed::after {
+    transform: rotate(0deg) !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+    transform: rotate(180deg) !important;
+}
+
+ */
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e") !important;
+}
+
 @media (max-width: 992px) {
     nav.navbar {
         padding-top: .3125rem;
@@ -103,7 +240,7 @@ nav.navbar {
         text-decoration: none;
         white-space: nowrap;
     }
-    
+
     .navbar-brand {
         top: -5px;
     }
@@ -112,6 +249,37 @@ nav.navbar {
         width: 217px;
         aspect-ratio: auto 217 / 80;
         height: 80px;
+    }
+
+    h1.hourly-temperature {
+        font-size: 1.8rem;
+    }
+
+    h2.temp-feels-like {
+        margin-right: 1.5rem;
+    }
+
+    h2.temp-feels-like,
+    h2.chance-of-prep {
+        font-size: 1.2rem;
+    }
+
+    .bi {
+        font-size: 1.2rem;
+    }
+
+    .weather-condition-text {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .row.last-row p.hourly-weather-info {
+        border-bottom: 1px solid #000;
+    }
+
+    .row.last-row p#md-hide-border {
+        border-bottom: 0px solid;
     }
 }
 
@@ -125,13 +293,45 @@ nav.navbar {
     .weather-info {
         text-align: center;
     }
+
+    .container-fluid.hourly-weather-header,
+    .container-fluid.hourly-weather {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .accordion-body {
+        padding: 5px;
+    }
+
+    h4.hourly-date {
+        font-size: 1.2rem;
+    }
 }
 
+@media (max-width: 320px) {
+    h1.hourly-temperature {
+        font-size: 1rem;
+        margin-right: 0.5rem;
+    }
 
-/*.container-fluid {
-    display: flex;
-    flex-wrap: inherit;
-    align-items: center;
-} 
+    p.weather-hour {
+        margin-right: 0.5rem;
+    }
 
-*/
+    .bi.bi-sun,
+    .bi-cloud, 
+    .bi-cloud-rain {
+        margin-right: 0.3rem;
+    }
+
+    h2.weather-condition-text {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        margin-left: 0;
+    }
+
+    h2.chance-of-prep {
+        font-size: 1rem;
+    }
+}
