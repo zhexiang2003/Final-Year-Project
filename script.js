@@ -11,7 +11,7 @@ const weatherIcons = {
     'Clouds': 'bi bi-cloud',
     'Rain': 'bi bi-cloud-rain',
     'Snow': 'fas fa-snowflake',
-    
+
     // Add more mappings as needed
 };
 
@@ -48,7 +48,7 @@ async function checkWeather() {
     document.querySelector(".temperature").innerHTML = roundedTemperature + `°C`;
 }
 
-async function getHourlyWeather() {
+/* async function getHourlyWeather() {
     const response = await fetch(`https://pro.openweathermap.org/data/2.5/forecast/hourly?q=Semenyih&units=metric` + `&appid=${apiKey}`);
     var data = await response.json();
 
@@ -145,6 +145,33 @@ async function getHourlyWeather() {
     // Use ResizeObserver to dynamically update itemsPerSlide
     const resizeObserver = new ResizeObserver(updateItemsPerSlide);
     resizeObserver.observe(document.querySelector('.carousel-inner'));
+} */
+
+function getCurrentTime() {
+    var date = new Date();
+    var hours = date.getHours();
+    var minute = date.getMinutes();
+    var seconds = date.getSeconds();
+
+    minute = minute < 10 ? '0' + minute : minute;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    var timeString = hours + ':' + minute + ':' + seconds;
+
+    document.querySelector(".time").innerHTML = timeString;
+}
+
+function getCurrentDate() {
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.toLocaleString('default', { month: 'long' });
+    var year = date.getFullYear();
+    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let weekday = dayNames[date.getDay()];
+
+    var fullDate = weekday + ', ' + day + ' ' + month + ' ' + year;
+
+    document.querySelector(".date").innerHTML = fullDate;
+
 }
 
 async function getHourlyWeatherTemp() {
@@ -153,6 +180,7 @@ async function getHourlyWeatherTemp() {
 
     let output = '';
     let currentTime = Math.floor(new Date().getTime() / 1000);
+    let currentDay = new Date().getDate();
 
     console.log(data);
 
@@ -170,14 +198,24 @@ async function getHourlyWeatherTemp() {
         let chanceOfPrep = (forecast.pop * 100).toFixed(0) + `%`;
         let cloudiness = forecast.clouds.all;
         let pressure = forecast.main.pressure;
-        let visibility = forecast.main.visibility;
+        let visibility = forecast.visibility / 1000;
 
         let unixTimestamp = forecast.dt; // Get the date and time of the forecast
         let date = new Date(unixTimestamp * 1000);
+        let forecastDay = date.getDate();
         let checkHour = date.getUTCHours();
         let hours = ("0" + date.getHours()).slice(-2);
         let minutes = ("0" + date.getMinutes()).slice(-2);
         let forecastTime = hours + ":" + minutes;
+        let timeDifferenceHours = (unixTimestamp - currentTime) / 3600;
+        let day = date.getDate();
+        let month = date.toLocaleString('default', { month: 'long' });
+        let year = date.getFullYear();
+        let formattedDate = `${day} ${month} ${year}`;
+        
+        if (forecastDay !== currentDay) {
+            return;
+        }
 
         let weatherIconClass;
 
@@ -216,7 +254,7 @@ async function getHourlyWeatherTemp() {
                     <div class="accordion-body">
                         <div class="container">
                             <div class="row">
-                                <h4 class="hourly-date">Date: ${date.toDateString()}</h4>
+                                <h4 class="hourly-date">Date: ${formattedDate}</h4>
                                 <h5 class="weather-description d-none d-sm-block">Weather Description: <span class="weather-description-text">${forecast.weather[0].description}</span></h5>
                                 <h5 class="weather-description-text d-sm-none">${forecast.weather[0].description}</h5>
                             </div>
@@ -249,7 +287,7 @@ async function getHourlyWeatherTemp() {
                                     <p class="hourly-weather-info">Pressure: <span class="weather-value">${pressure} hPa</span></p>
                                 </div>
                                 <div class="col-md-6 weather-info-section">
-                                    <p class="hourly-weather-info" id="md-hide-border">Visibility: <span class="weather-value">${visibility / 1000}km</span></p>
+                                    <p class="hourly-weather-info" id="md-hide-border">Visibility: <span class="weather-value">${visibility} km</span></p>
                                 </div>
                             </div>
                         </div>
@@ -262,44 +300,14 @@ async function getHourlyWeatherTemp() {
     document.querySelector('#accordionPanelsStayOpenExample').innerHTML = output;
 }
 
-
-function getCurrentTime() {
-    var date = new Date();
-    var hours = date.getHours();
-    var minute = date.getMinutes();
-    var seconds = date.getSeconds();
-
-    minute = minute < 10 ? '0' + minute : minute;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-    var timeString = hours + ':' + minute + ':' + seconds;
-
-    document.querySelector(".time").innerHTML = timeString;
-}
-
-function getCurrentDate() {
-    var date = new Date();
-    var day = date.getDate();
-    var month = date.toLocaleString('default', { month: 'long' });
-    var year = date.getFullYear();
-    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let weekday = dayNames[date.getDay()];
-
-    var fullDate = weekday + ', ' + day + ' ' + month + ' ' + year;
-
-    document.querySelector(".date").innerHTML = fullDate;
-
-}
-
-
-
 document.addEventListener('DOMContentLoaded', (event) => {
     getCurrentTime();
     getCurrentDate();
 
-    $('.accordion-button').on('click', function() {
+    $('.accordion-button').on('click', function () {
         // Toggle the icon class on this button
         $(this).find('i').toggleClass('bi-chevron-down bi-chevron-up');
-    }); 
+    });
 });
 
 setInterval(getCurrentTime, 1000);
