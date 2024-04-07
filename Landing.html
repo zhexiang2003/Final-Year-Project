@@ -14,6 +14,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="script.js"></script>
 
 </head>
@@ -66,15 +67,117 @@
             <h1 class="location"></h1>
             <h1 class="temperature"></h1>
             <h1 class="time"></h1>
-            <h1 class="date" style="margin-bottom: 0;"></h1>
+            <h1 class="date"></h1>
+            <h1 class="current-weather-condition"></h1>
+            <h1 class="current-weather-condition-mobile d-sm-none" style="margin-bottom: 0;"></h1>
         </div>
 
         <div class="scroll-down">
-            <h3>Scroll down for more information</h3>
+            <h3 style="margin-top: 0;">Scroll down for more information</h3>
             <i class="bi bi-chevron-double-down"></i>
         </div>
     </div>
+
+    <h1 class="weather-forecast-title">Today's Weather Forecast</h1>
+
+    <div class="container-fluid desktop further-weather-info d-none d-md-block">
+        <div class="row">
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-sunrise"></i>
+                <h5 class="weather-category">Sunrise: <span id="sunrise-value"></span></h5>
+            </div>
     
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-thermometer-low"></i>
+                <h5 class="weather-category">Minimum Temperature: <span id="min-temp-value"></span</h5>
+            </div>
+    
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-wind"></i>
+                <h5 class="weather-category">Wind Speed: <span id="wind-speed-value"></span</h5>
+            </div>
+    
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-clouds"></i>
+                <h5 class="weather-category">Cloudiness: <span id="cloudiness-value"></span</h5>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-sunset"></i>
+                <h5 class="weather-category">Sunset: <span id="sunset-value"></span</h5>
+            </div>
+    
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-thermometer-high"></i>
+                <h5 class="weather-category">Maximum Temperature: <span id="max-temp-value"></span</h5>
+            </div>
+    
+            <div class="col-md-3 further-current-weather">
+                <i class="material-icons">compress</i>
+                <h5 class="weather-category">Pressure: <span id="pressure-value"></span</h5>
+            </div>
+    
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-eye"></i>
+                <h5 class="weather-category">Visibility: <span id="visibility-value"></span</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mobile further-weather-info d-md-none">
+        <div class="row">
+            <div class="col-sm-6 further-current-weather">
+                <i class="bi bi-sunrise"></i>
+                <h5 class="weather-category">Sunrise: <span id="sunrise-value-mobile"></span></h5>
+            </div>
+
+            <div class="col-sm-6 further-current-weather">
+                <i class="bi bi-sunset"></i>
+                <h5 class="weather-category">Sunset: <span id="sunset-value-mobile"></span</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 further-current-weather">
+                <i class="bi bi-thermometer-low"></i>
+                <h5 class="weather-category">Minimum Temperature: <span id="min-temp-value-mobile"></span</h5>
+            </div>
+
+            <div class="col-sm-6 further-current-weather">
+                <i class="bi bi-thermometer-high"></i>
+                <h5 class="weather-category">Maximum Temperature: <span id="max-temp-value-mobile"></span</h5>
+            </div>
+        </div>
+
+        <div class="row">    
+            <div class="col-sm-6 further-current-weather">
+                <i class="bi bi-wind"></i>
+                <h5 class="weather-category">Wind Speed: <span id="wind-speed-value-mobile"></span</h5>
+            </div>
+    
+            <div class="col-sm-6 further-current-weather">
+                <i class="bi bi-clouds"></i>
+                <h5 class="weather-category">Cloudiness: <span id="cloudiness-value-mobile"></span</h5>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-sm-6 further-current-weather">
+                <i class="material-icons">compress</i>
+                <h5 class="weather-category">Pressure: <span id="pressure-value-mobile"></span</h5>
+            </div>
+    
+            <div class="col-sm-6 further-current-weather">
+                <i class="bi bi-eye"></i>
+                <h5 class="weather-category">Visibility: <span id="visibility-value-mobile"></span</h5>
+            </div>
+        </div>
+    </div>    
+
+    <h1 class="weather-forecast-title">Today's Hourly Weather Forecast</h1>
+
     <div class="container">
         <div class="accordion" id="accordionPanelsStayOpenExample">
 

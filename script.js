@@ -10,10 +10,15 @@ const weatherIcons = {
     'Clear': 'bi bi-sun',
     'Clouds': 'bi bi-cloud',
     'Rain': 'bi bi-cloud-rain',
-    'Snow': 'fas fa-snowflake',
-
+    'Thunderstorm': 'bi bi-cloud-lightning-rain'
     // Add more mappings as needed
 };
+
+const weatherImage = {
+    'Clear': 'Images/University-Day-2.jpg',
+    'Clouds': 'Images/University-Day-2.jpg',
+    'Night': 'Images/University-Night-2.png'
+}
 
 /* scrollLeftButton.addEventListener('click', () => {
     scrollContainer.scrollLeft -= 600;
@@ -41,111 +46,65 @@ async function checkWeather() {
     const response = await fetch(apiURL + `&appid=${apiKey}`);
     var data = await response.json();
 
+    console.log(data);
+
     let temperature = data.main.temp;
     let roundedTemperature = temperature.toFixed(1);
+    let currentWeather = data.weather[0].main;
+    let currentWeatherDesc = data.weather[0].description;
+    let date = new Date();
+    let checkHour = date.getHours();
+
+    let sunrise = new Date(data.sys.sunrise * 1000);
+    let sunriseHours = ("0" + sunrise.getHours()).slice(-2);
+    let sunriseMinutes = ("0" + sunrise.getMinutes()).slice(-2);
+    let sunriseTime = sunriseHours + ":" + sunriseMinutes;
+
+    let sunset = new Date(data.sys.sunset * 1000);
+    let sunsetHours = ("0" + sunset.getHours()).slice(-2);
+    let sunsetMinutes = ("0" + sunset.getMinutes()).slice(-2);
+    let sunsetTime = sunsetHours + ":" + sunsetMinutes;
 
     document.querySelector(".location").innerHTML = data.name;
     document.querySelector(".temperature").innerHTML = roundedTemperature + `°C`;
-}
+    document.querySelector(".current-weather-condition").innerHTML += currentWeather + `<span class="weather-desc d-none d-sm-inline">, ${currentWeatherDesc}</span>`;
+    document.querySelector(".current-weather-condition-mobile").innerHTML = currentWeatherDesc;
 
-/* async function getHourlyWeather() {
-    const response = await fetch(`https://pro.openweathermap.org/data/2.5/forecast/hourly?q=Semenyih&units=metric` + `&appid=${apiKey}`);
-    var data = await response.json();
-
-    console.log(data);
-
-    let output = '';
-    let carouselItem = '';
-    let currentTime = Math.floor(new Date().getTime() / 1000);
-    console.log(currentTime);
-
-    let itemsPerSlide;
-
-    // Function to update itemsPerSlide based on screen width
-    function updateItemsPerSlide() {
-        let screenWidth = window.innerWidth;
-
-        if (screenWidth >= 992) { // Large screens
-            itemsPerSlide = 3;
-        } else if (screenWidth >= 768) { // Medium screens
-            itemsPerSlide = 2;
-        } else { // Small screens
-            itemsPerSlide = 1;
+    if (checkHour >= 6 && checkHour < 19) {
+        if (currentWeather === 'Clear' || currentWeather === 'Clouds') {
+            backgroundImage = 'day-clear-cloudy';
+        } else if (currentWeather === 'Rain') {
+            backgroundImage = 'day-rain';
         }
-
-        // Re-render the carousel when itemsPerSlide is updated
-        renderCarousel();
+    } else {
+        if (currentWeather === 'Clear' || currentWeather === 'Clouds') {
+            backgroundImage = 'night-clear-cloudy';
+        } else if (currentWeather === 'Rain') {
+            backgroundImage = 'night-rain';
+        }
     }
 
-    // Function to render the carousel
-    function renderCarousel() {
-        output = ''; // Clear existing output
+    let overlay = document.querySelector('.overlay-background');
+    overlay.className = 'overlay-background ' + backgroundImage;
 
-        data.list.forEach((forecast, index) => {
+    document.querySelector("#sunrise-value").innerHTML = sunriseTime;
+    document.querySelector("#min-temp-value").innerHTML = (data.main.temp_min).toFixed(1) + '°C';
+    document.querySelector("#wind-speed-value").innerHTML = data.wind.speed + 'm/s';
+    document.querySelector("#cloudiness-value").innerHTML = data.clouds.all + '%';
+    document.querySelector("#sunrise-value-mobile").innerHTML = sunriseTime;
+    document.querySelector("#min-temp-value-mobile").innerHTML = (data.main.temp_min).toFixed(1) + '°C';
+    document.querySelector("#wind-speed-value-mobile").innerHTML = data.wind.speed + 'm/s';
+    document.querySelector("#cloudiness-value-mobile").innerHTML = data.clouds.all + '%';
 
-            if (forecast.dt <= currentTime) {
-                return;
-            }
-
-            let hourlyTemperature = forecast.main.temp;
-            let roundedHourlyTemperature = hourlyTemperature.toFixed(1);
-
-            let humidity = forecast.main.humidity;
-            
-            let tempFeelsLike = forecast.main.feels_like;
-            let roundedTempFeelsLike = tempFeelsLike.toFixed(1);
-
-            let windspeed = forecast.wind.speed;
-            let chanceOfPrep = forecast.pop;
-
-            let unixTimestamp = forecast.dt; // Get the date and time of the forecast
-            let date = new Date(unixTimestamp * 1000);
-
-            let hours = ("0" + date.getHours()).slice(-2);
-            let minutes = ("0" + date.getMinutes()).slice(-2);
-
-            let forecastTime = hours + ":" + minutes;
-
-            let weatherIconClass = weatherIcons[forecast.weather[0].main] || 'fas fa-question';
-
-            carouselItem += `
-                <div class="container hourly-weather">
-                    <div class="card-body">
-                        <i class="${weatherIconClass}"></i>
-                        <h5 class="card-title">${forecast.weather[0].main}</h5>
-                        <p class="card-text">Chance of Precipitation: ${chanceOfPrep}</p>
-                        <p class="card-text">Forecast Time: ${forecastTime}</p>
-                        <p class="card-text">Temperature: ${roundedHourlyTemperature}°C</p>
-                        <p class="card-text">Feels Like: ${roundedTempFeelsLike}°C</p>
-                        <p class="card-text">Humidity: ${humidity}%</p>
-                        <p class="card-text">Wind Speed: ${windspeed} m/s</p>
-                    </div>
-                </div>
-            `;
-
-            if ((index + 1) % itemsPerSlide === 0 || index === data.list.length - 1) {
-                const activeClass = output === '' ? ' active' : '';
-                output += `
-                    <div class="carousel-item${activeClass}">
-                        <div class="container hourlyWeatherDisplay">
-                            ${carouselItem}
-                        </div>
-                    </div>
-                `;
-                carouselItem = ''; // Reset the carouselItem for the next group of forecasts
-            }
-        });
-
-        document.querySelector('.carousel-inner').innerHTML = output;
-    }
-
-    // Call updateItemsPerSlide initially
-    updateItemsPerSlide();
-
-    // Use ResizeObserver to dynamically update itemsPerSlide
-    const resizeObserver = new ResizeObserver(updateItemsPerSlide);
-    resizeObserver.observe(document.querySelector('.carousel-inner'));
-} */
+    document.querySelector("#sunset-value").innerHTML = sunsetTime;
+    document.querySelector("#max-temp-value").innerHTML = (data.main.temp_max).toFixed(1) + '°C';
+    document.querySelector("#pressure-value").innerHTML = data.main.pressure + 'hPa';
+    document.querySelector("#visibility-value").innerHTML = (data.visibility / 1000) + 'km';
+    document.querySelector("#sunset-value-mobile").innerHTML = sunsetTime;
+    document.querySelector("#max-temp-value-mobile").innerHTML = (data.main.temp_max).toFixed(1) + '°C';
+    document.querySelector("#pressure-value-mobile").innerHTML = data.main.pressure + 'hPa';
+    document.querySelector("#visibility-value-mobile").innerHTML = (data.visibility / 1000) + ' km';
+}
 
 function getCurrentTime() {
     var date = new Date();
@@ -174,13 +133,18 @@ function getCurrentDate() {
 
 }
 
-async function getHourlyWeatherTemp() {
+async function getHourlyWeather() {
     const response = await fetch(`https://pro.openweathermap.org/data/2.5/forecast/hourly?q=Semenyih&units=metric` + `&appid=${apiKey}`);
     var data = await response.json();
 
     let output = '';
     let currentTime = Math.floor(new Date().getTime() / 1000);
     let currentDay = new Date().getDate();
+    let currentHour = new Date().getHours();
+
+    if (currentHour === 23) {
+        currentDay++;
+    }
 
     console.log(data);
 
@@ -199,11 +163,12 @@ async function getHourlyWeatherTemp() {
         let cloudiness = forecast.clouds.all;
         let pressure = forecast.main.pressure;
         let visibility = forecast.visibility / 1000;
+        let weatherIconId = forecast.weather[0].icon;
 
         let unixTimestamp = forecast.dt; // Get the date and time of the forecast
         let date = new Date(unixTimestamp * 1000);
         let forecastDay = date.getDate();
-        let checkHour = date.getUTCHours();
+        let checkHour = date.getHours();
         let hours = ("0" + date.getHours()).slice(-2);
         let minutes = ("0" + date.getMinutes()).slice(-2);
         let forecastTime = hours + ":" + minutes;
@@ -212,11 +177,15 @@ async function getHourlyWeatherTemp() {
         let month = date.toLocaleString('default', { month: 'long' });
         let year = date.getFullYear();
         let formattedDate = `${day} ${month} ${year}`;
-        
+
+        let weatherCondition = forecast.weather[0].main;
+        let backgroundImage = '';
+
         if (forecastDay !== currentDay) {
             return;
         }
 
+        /* 
         let weatherIconClass;
 
         if (forecast.weather[0].main === 'Clear') {
@@ -224,6 +193,7 @@ async function getHourlyWeatherTemp() {
         } else {
             weatherIconClass = weatherIcons[forecast.weather[0].main] || 'bi bi-question';
         }
+        */
 
         output += `
             <div class="accordion-item">
@@ -235,7 +205,9 @@ async function getHourlyWeatherTemp() {
                         <div class="container-fluid hourly-weather-header">
                             <div class="container-fluid hourly-weather">
                                 <p class="weather-hour">${forecastTime}</p>
-                                <i class="${weatherIconClass}"></i>
+                                <i class="weather-icon">
+                                    <img src="http://openweathermap.org/img/wn/${weatherIconId}.png" alt="Weather icon" class="api-icon">
+                                </i>
                                 <h1 class="hourly-temperature">${hourlyTemperature}°C</h1>
                                 <h2 class="temp-feels-like d-none d-md-block">Feels Like: ${tempFeelsLike}°C</h2>
                                 <div class="chance-of-prep-group">
@@ -303,6 +275,7 @@ async function getHourlyWeatherTemp() {
 document.addEventListener('DOMContentLoaded', (event) => {
     getCurrentTime();
     getCurrentDate();
+    checkWeather();
 
     $('.accordion-button').on('click', function () {
         // Toggle the icon class on this button
@@ -312,6 +285,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 setInterval(getCurrentTime, 1000);
 
-checkWeather();
-getHourlyWeatherTemp();
+getHourlyWeather();
 

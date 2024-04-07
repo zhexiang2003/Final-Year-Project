@@ -70,14 +70,29 @@ nav.navbar {
     font-size: 1.25rem;
 }
 
-.overlay-background {
+.overlay-background.day-clear-cloudy {
+    background-image: url("Images/University-Day-2.jpg");
+}
+
+.overlay-background.day-rain {
+    background-image: url("Images/malaysia-weather-raining.png");
+}
+
+.overlay-background.night-clear-cloudy {
     background-image: url("Images/University-Night-2.png");
+}
+
+.overlay-background.night-rain {
+    background-image: url("Images/night-rain-2.jpg");
+}
+
+.overlay-background {
     background-repeat: no-repeat;
     background-size: cover;
     height: calc(100vh - var(--navbar-height));
     width: 100vw;
     max-width: 100%;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,6 +113,10 @@ nav.navbar {
     margin-top: 0;
 }
 
+h1.current-weather-condition {
+    margin-bottom: 0;
+}
+
 .scroll-down {
     position: relative;
     text-align: center;
@@ -110,28 +129,65 @@ nav.navbar {
     margin-right: 0;
 }
 
-/* .weather-info {
-    position: relative;
-    padding: 2rem;
-    bottom: -25vh;
-    color: #10263B;
-    backdrop-filter: blur(5px);
-}
-
-.scroll-down {
-    color: white;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
- */
 .bi.bi-chevron-double-down::before {
     transform: scale(3, 1.5);
 }
 
-.container-fluid.hourlyWeatherDisplay {
+.weather-forecast-title {
+    text-align: center;
+    background-color: #10263B;
+    color: #fff;
+    padding: 1.618rem 0;
+}
+
+.container-fluid.further-weather-info {
+    width: 90%;
+    border: none; /* Remove the border around the container */
+    padding: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+}
+
+.desktop.further-weather-info {
+    padding: 0.5rem;
+}
+
+.desktop .further-current-weather {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-right: 1px solid #10263B;
+    border-bottom: 1px solid #10263B;
+}
+
+.desktop .further-current-weather:last-child {
+    border-right: none; /* Remove the right border from the last cell in each row */
+}
+
+.desktop .row:last-child .further-current-weather {
+    border-bottom: none; /* Remove the bottom border from the last row */
+}
+
+/* #pressure-thermometer {
+    image: url(Images/thermometer.svg);
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+*/
+
+.material-icons {
+    width: 30px !important;
+    height: 30px !important;
+    max-width: 100%;
+    font-size: 30px !important;
+    margin-right: 1rem;
+}
+
+/* .container-fluid.hourlyWeatherDisplay {
     display: flex;
     overflow: hidden;
     scroll-behavior: smooth;
@@ -148,7 +204,7 @@ nav.navbar {
     margin-left: 1.8rem;
     margin-right: 1.8rem;
 }
-
+ */
 .accordion {
     width: 80%;
     max-width: 100%;
@@ -172,6 +228,11 @@ nav.navbar {
 .bi {
     font-size: 2rem;
     margin-right: 1rem;
+}
+
+img.api-icon {
+    margin-right: 1rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
 
 .hourly-temperature {
@@ -292,7 +353,7 @@ h5.weather-description-text.d-sm-none {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e") !important;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     nav.navbar {
         padding-top: .3125rem;
         padding-bottom: .3125rem;
@@ -333,9 +394,33 @@ h5.weather-description-text.d-sm-none {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+    .mobile .further-current-weather:first-child {
+        border-right: 1px solid #10263B;
+    }
+
+    .mobile .further-current-weather {
+        text-align: center;
+        padding: 1.618rem;
+        border-bottom: 1px solid #10263B;
+    }
+
+    .mobile .further-current-weather h5.weather-category {
+        margin: 10px auto;
+    }
+
+    .mobile .further-current-weather .bi, .material-icons {
+        font-size: 28px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mobile .row:last-child .further-current-weather {
+        border-bottom: 0px;
+    }
+
     .row.last-row p.hourly-weather-info {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #10263B;
     }
 
     .row.last-row p#md-hide-border {
@@ -343,7 +428,29 @@ h5.weather-description-text.d-sm-none {
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575px) {
+    .weather-info h1 {
+        font-size: 1.5rem;
+    }
+
+    .mobile .container-fluid.further-weather-info {
+        padding: 1.618rem;
+    }
+
+    .mobile .further-current-weather {
+        border-right: none;
+        border-bottom: 1px #10263B solid;
+        padding: 1rem;
+    }
+
+    .mobile .further-current-weather:first-child {
+        border-right: none;
+    }
+
+    .mobile .row:last-child .further-current-weather {
+        border-bottom: 1px solid #10263B;
+    }
+
     .university-logo {
         width: 176px;
         aspect-ratio: auto 176 / 65;
@@ -368,9 +475,14 @@ h5.weather-description-text.d-sm-none {
     h4.hourly-date {
         font-size: 1.2rem;
     }
+
+    h1.current-weather-condition, h1.current-weather-condition-mobile {
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 320px) {
+
     h1.hourly-temperature {
         font-size: 1rem;
         margin-right: 0.5rem;
