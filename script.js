@@ -284,6 +284,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 setInterval(getCurrentTime, 1000);
-
 getHourlyWeather();
 
