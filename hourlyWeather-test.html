@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hourly Weather Forecast | University of Nottingham Malaysia</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        crossorigin="anonymous">
+    <script src="script2.js"></script>
+
+    <style>
+        .accordion {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container-fluid.hourly-weather {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .weather-hour-group,
+        .temp-feels-like-group,
+        .chance-of-prep-group {
+            display: flex;
+            align-items: center;
+            /* Align items vertically within each group */
+        }
+
+        .weather-hour-group {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .bi {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .hourly-temperature {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 1rem;
+        }
+
+        .temp-feels-like {
+            text-align: left;
+            margin: 0;
+        }
+
+        .temp-feels-like-group {
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+        }
+
+        .chance-of-prep {
+            margin-bottom: 0;
+        }
+
+        .chance-of-prep-group {
+            display: flex;
+            margin-left: -3rem;
+            margin-right: 0;
+            flex-direction: row;
+            align-items: center;
+            justify-content: right;
+        }
+
+        .bi.bi-droplet {
+            margin-right: 0;
+        }
+
+        .weather-condition-text {
+            margin-left: 1.7rem;
+            margin-bottom: 0;
+        }
+
+        .hourly-weather-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .weather-value {
+            margin-left: auto;
+        }
+
+        p.hourly-weather-info,
+        p.weather-value {
+            margin-bottom: 0;
+        }
+
+        .row p.hourly-weather-info {
+            border-bottom: 1px solid #000;
+            padding: 11px 0 10px;
+        }
+
+        .row.last-row p.hourly-weather-info {
+            border-bottom: 0px solid;
+        }
+
+        .accordion-body {
+            /* padding-top: 5px; */
+        }
+
+        .accordion-button {
+            background-color: white;
+            border-bottom: none !important;
+            box-shadow: none !important;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: inherit;
+            background-color: white;
+            box-shadow: none !important;
+        }
+
+        h5.weather-description,
+        h5.weather-description-text.d-sm-none {
+            margin-top: 8px;
+        }
+
+        @media (max-width: 992px) {
+            h1.hourly-temperature {
+                font-size: 1.8rem;
+            }
+
+            h2.temp-feels-like {
+                margin-right: 1.5rem;
+            }
+
+            h2.temp-feels-like,
+            h2.chance-of-prep {
+                font-size: 1.2rem;
+            }
+
+            .bi {
+                font-size: 1.2rem;
+            }
+
+            .weather-condition-text {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .row.last-row p.hourly-weather-info {
+                border-bottom: 1px solid #000;
+            }
+
+            .row.last-row p#md-hide-border {
+                border-bottom: 0px solid;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .container-fluid.hourly-weather-header,
+            .container-fluid.hourly-weather {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .accordion-body {
+                padding: 5px;
+            }
+
+            h4.hourly-date {
+                font-size: 1.2rem;
+            }
+
+        }
+
+        @media (max-width: 320px) {
+            h1.hourly-temperature {
+                font-size: 1rem;
+                margin-right: 0.5rem;
+            }
+
+            p.weather-hour {
+                margin-right: 0.5rem;
+            }
+
+            .bi.bi-sun,
+            .bi-cloud,
+            .bi-cloud-rain {
+                margin-right: 0.3rem;
+            }
+
+            h2.weather-condition-text {
+                font-size: 1rem;
+                margin-top: 0.5rem;
+                margin-left: 0;
+            }
+
+            h2.chance-of-prep {
+                font-size: 1rem;
+            }
+        }
+
+        .container.hourly-container {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .nav.nav-pills {
+            justify-content: center;
+        }
+
+        .nav-pills .nav-link {
+            color: #10263B;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #10263B;
+            color: white;
+        }
+
+        .tab-content {
+            width: 90%;
+            max-width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container hourly-container">
+
+        <div class="d-flex align-items-start">
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-today-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-today" type="button" role="tab" aria-controls="v-pills-today"
+                    aria-selected="true">Today: <span id="todayDate"></span></button>
+
+                <button class="nav-link" id="v-pills-tomorrow-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-tomorrow" type="button" role="tab" aria-controls="v-pills-tomorrow"
+                    aria-selected="false">Tomorrow: <span id="tmrDate"></span></button>
+
+                <button class="nav-link" id="v-pills-overmorrow-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-overmorrow" type="button" role="tab" aria-controls="v-pills-overmorrow"
+                    aria-selected="false">Overmorrow: <span id="overmorrowDate"></span></button>
+
+                <button class="nav-link" id="v-pills-nextMorrow-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-nextMorrow" type="button" role="tab" aria-controls="v-pills-nextMorrow"
+                    aria-selected="false">Next Morrow: <span id="nextMorrowDate"></span></button>
+            </div>
+
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-today" role="tabpanel"
+                    aria-labelledby="v-pills-today-tab" tabindex="0">
+
+                    <div class="accordion" id="accordionPanelsToday">
+
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="v-pills-tomorrow" role="tabpanel" aria-labelledby="v-pills-tomorrow-tab"
+                    tabindex="0">
+                    <div class="accordion" id="accordionPanelsTomorrow">
+
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="v-pills-overmorrow" role="tabpanel"
+                    aria-labelledby="v-pills-overmorrow-tab" tabindex="0">Real Love</div>
+                <div class="tab-pane fade" id="v-pills-nextMorrow" role="tabpanel"
+                    aria-labelledby="v-pills-nextMorrow-tab" tabindex="0">...</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>

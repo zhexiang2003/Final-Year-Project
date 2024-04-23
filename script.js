@@ -133,7 +133,7 @@ function getCurrentDate() {
 
 }
 
-async function getHourlyWeather() {
+async function getCurrentHourlyWeather() {
     const response = await fetch(`https://pro.openweathermap.org/data/2.5/forecast/hourly?q=Semenyih&units=metric` + `&appid=${apiKey}`);
     var data = await response.json();
 
@@ -142,7 +142,7 @@ async function getHourlyWeather() {
     let currentDay = new Date().getDate();
     let currentHour = new Date().getHours();
 
-    if (currentHour === 23) {
+    if (currentHour === 24) {
         currentDay++;
     }
 
@@ -204,19 +204,33 @@ async function getHourlyWeather() {
 
                         <div class="container-fluid hourly-weather-header">
                             <div class="container-fluid hourly-weather">
-                                <p class="weather-hour">${forecastTime}</p>
-                                <i class="weather-icon">
-                                    <img src="http://openweathermap.org/img/wn/${weatherIconId}.png" alt="Weather icon" class="api-icon">
-                                </i>
-                                <h1 class="hourly-temperature">${hourlyTemperature}°C</h1>
-                                <h2 class="temp-feels-like d-none d-md-block">Feels Like: ${tempFeelsLike}°C</h2>
-                                <div class="chance-of-prep-group">
+                                <div class="col-4 weather-hour-group">
+                                    
+                                    <p class="weather-hour">${forecastTime}</p>
+
+                                    <h1 class="hourly-temperature">${hourlyTemperature}°C</h1>
+                                </div>
+
+                                <div class="col-4 temp-feels-like-group">
+                                    <h2 class="temp-feels-like d-none d-md-block">Feels Like: ${tempFeelsLike}°C</h2>
+                                </div>
+                                
+                                <div class="col-4 chance-of-prep-group">
                                     <i class="bi bi-droplet d-none d-sm-block"></i>
                                     <h2 class="chance-of-prep d-none d-sm-block">${chanceOfPrep}</h2>
                                 </div>
                             </div>
+
                             <div class="container-fluid weather-condition">
-                                <h2 class="weather-condition-text">${forecast.weather[0].main}</h2>
+
+                                <div class="weather-condition-group">
+                                    <h2 class="weather-condition-text">${forecast.weather[0].main}</h2>
+
+                                    <i class="weather-icon">
+                                        <img src="http://openweathermap.org/img/wn/${weatherIconId}.png" alt="Weather icon" class="api-icon">
+                                    </i>
+                                </div>
+                                
                             </div>
                         </div>
                     </button>
@@ -269,8 +283,14 @@ async function getHourlyWeather() {
         `;
     });
 
+    if (output === '') {
+        document.querySelector('.no-more-info').innerHTML = `<p class="no-more-info-text">Please wait until 00:00 for the next day's hourly weather forecast</p>`;
+    }
+
     document.querySelector('#accordionPanelsStayOpenExample').innerHTML = output;
+    
 }
+
 
 document.addEventListener('DOMContentLoaded', (event) => {
     getCurrentTime();
@@ -284,5 +304,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 setInterval(getCurrentTime, 1000);
-getHourlyWeather();
-
+getCurrentHourlyWeather();

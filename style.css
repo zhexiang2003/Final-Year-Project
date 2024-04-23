@@ -33,6 +33,8 @@ img {
     height: auto;
 }
 
+/* Landing.html */
+
 .university-logo {
     max-width: 100%;
     height: 94px;
@@ -75,7 +77,7 @@ nav.navbar {
 }
 
 .overlay-background.day-rain {
-    background-image: url("Images/malaysia-weather-raining.png");
+    background-image: url("Images/day-raining-3.jpg");
 }
 
 .overlay-background.night-clear-cloudy {
@@ -138,6 +140,18 @@ h1.current-weather-condition {
     background-color: #10263B;
     color: #fff;
     padding: 1.618rem 0;
+    margin: 1.618rem 0;
+}
+
+.caption {
+    font-size: 18px;
+    text-align: center;
+    color: #10263B;
+}
+
+.no-more-info-text {
+    text-align: center;
+    margin-bottom: 0;
 }
 
 .container-fluid.further-weather-info {
@@ -217,12 +231,33 @@ h1.current-weather-condition {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+}
+
+.col-4 {
+    width: 100%;
+}
+
+.weather-hour-group, .temp-feels-like-group, .chance-of-prep-group, .weather-condition-group {
+    display: flex;
+    align-items: center;
+}
+
+.weather-hour-group {
+    margin-right: 3rem;
+}
+
+.temp-feels-like-group {
+    display: flex;
+    text-align: left;
+    justify-content: left;
+    white-space: nowrap;
 }
 
 .weather-hour {
     margin-top: 0;
     margin-bottom: 0;
-    margin-right: 1.2rem;
+    margin-right: 1rem;
 }
 
 .bi {
@@ -242,7 +277,7 @@ img.api-icon {
 }
 
 .temp-feels-like {
-    margin-left: auto;
+    margin-left: 0;
     margin-right: 2.5rem;
     margin-bottom: 0;
     margin-top: 0;
@@ -255,10 +290,11 @@ img.api-icon {
 
 .chance-of-prep-group {
     display: flex;
-    margin-left: auto;
+    margin-left: -3rem;
     margin-right: 0;
     flex-direction: row;
     align-items: center;
+    justify-content: right;
 }
 
 .bi.bi-droplet {
@@ -268,6 +304,7 @@ img.api-icon {
 .weather-condition-text {
     margin-left: 1.7rem;
     margin-bottom: 0;
+    margin-right: 1rem;
 }
 
 .hourly-weather-info {
@@ -327,6 +364,8 @@ h5.weather-description,
 h5.weather-description-text.d-sm-none {
     margin-top: 8px;
 }
+
+
 
 /* .accordion-button::after {
     font-family: "bootstrap-icons" !important;
@@ -516,4 +555,69 @@ h5.weather-description-text.d-sm-none {
     h2.chance-of-prep {
         font-size: 1rem;
     }
+}
+
+/* hourlyWeather.html */
+
+#hourlyWeatherFile-Desktop .nav.nav-pills {
+    justify-content: center;
+}
+
+#hourlyWeatherFile-Desktop .nav-pills .nav-link {
+    color: #10263B;
+}
+
+#hourlyWeatherFile-Desktop button.nav-link {
+    margin-right: 0;
+}
+
+#hourlyWeatherFile-Desktop .nav.flex-column.nav-pills.me-3 {
+    margin-right: 0;
+}
+
+#hourlyWeatherFile-Desktop .nav-pills .nav-link.active {
+    background-color: #10263B;
+    color: white;
+}
+
+#todayDate, #tmrDate, #overmorrowDate, #nextMorrowDate {
+    white-space: nowrap;
+}
+
+#hourlyWeatherFile-Desktop .tab-content {
+    width: 100%;
+    max-width: 100%;
+}
+
+#hourlyWeatherFile-Desktop .accordion {
+    width: 95%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#hourlyWeatherFile-Desktop .weather-hour-group {
+    margin-right: 2.6vw;
+}
+
+#hourlyWeatherFile-Desktop .chance-of-prep-group{
+    margin-left: -2.6vw;
+}
+
+#hourlyWeatherFile-Desktop .date-header {
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 95%;
+    max-width: 100%;
+}
+
+#hourlyWeatherFile-Mobile .date-header {
+    margin-top: 0;
+}
+
+#hourlyWeatherFile-Mobile .accordion {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 }
