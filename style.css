@@ -520,7 +520,7 @@ h5.weather-description-text.d-sm-none {
         padding: 5px;
     }
 
-    h4.hourly-date {
+    h4.hourly-date, h4.daily-date {
         font-size: 1.2rem;
     }
 
@@ -620,4 +620,136 @@ h5.weather-description-text.d-sm-none {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
+}
+
+p.daily-weather-info, p.weather-value {
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 767px) {
+    #accordionHourlyTodayMobile .accordion .daily-weather-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    #accordionHourlyTodayMobile .accordion .row p.daily-weather-info {
+        border-bottom: 1px solid #000;
+        padding: 11px 0 10px;
+    }
+    
+    #accordionHourlyTodayMobile .accordion .row.last-row p.daily-weather-info {
+        border-bottom: 0px solid;
+    }
+}
+
+/* dailyWeather.html */
+
+#accordionDaily .container-fluid.daily-weather {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#accordionDaily .weather-day-group {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-right: 2.6vw;
+}
+
+#accordionDaily .day-temperature, #accordionDaily .night-temperature {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+#accordionDaily .day-temperature .bi-sun, .night-temperature .bi-moon {
+    margin-right: 0.5rem;
+}
+
+#accordionDaily .current-day-date {
+    text-align: center; 
+    margin-right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+#accordionDaily .temp-feels-like-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#accordionDaily .temp-feels-like-group .temp-feels-like-day {
+    margin-top: 0;
+    margin-bottom: 0;
+} 
+
+#accordionDaily .temp-feels-like-group .temp-feels-like-night {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+#accordionDaily .chance-of-prep-group {
+    margin-left: -2.6vw;
+}
+
+p.daily-weather-info, p.weather-value {
+    margin-bottom: 0;
+}
+
+#accordionDaily .daily-weather-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#accordionDaily .row p.daily-weather-info {
+    border-bottom: 1px solid #000;
+    padding: 11px 0 10px;
+}
+
+#accordionDaily .row.last-row p.daily-weather-info {
+    border-bottom: 0px solid;
+}
+
+@media (max-width: 991px) {
+    #accordionDaily .temperature-group {
+        font-size: 16px;
+    }
+
+    #accordionDaily .temp-feels-like-group .temp-feels-like-day {
+        font-size: 16px;
+    } 
+    
+    #accordionDaily .temp-feels-like-group .temp-feels-like-night {
+        font-size: 16px;
+    }
+
+    #accordionDaily .weather-day-group {
+        margin-right: 12vw;
+    }
+
+    #accordionDaily .chance-of-prep-group {
+        margin-left: -12vw;
+    }
+
+    #accordionDaily .temp-feels-like-group {
+        margin-right: 0.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    #accordionDaily .row.last-row p.daily-weather-info {
+        border-bottom: 1px solid #10263B;
+    }
+
+    #accordionDaily .row.last-row p#md-hide-border.daily-weather-info {
+        border-bottom: 0px solid !important;
+    }
 }

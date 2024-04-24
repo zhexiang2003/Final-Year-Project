@@ -120,6 +120,11 @@ async function getTodayHourlyWeather() {
                             </div>
                             <div class="row">
                                 <div class="col-md-6 weather-info-section">
+                                    <p class="hourly-weather-info d-md-none">Feels Like: <span class="weather-value">${tempFeelsLike}°C</span></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 weather-info-section">
                                     <p class="hourly-weather-info">Humidity: <span class="weather-value">${humidity}%</span></p>
                                 </div>
                                 <div class="col-md-6 weather-info-section">
@@ -150,6 +155,9 @@ async function getTodayHourlyWeather() {
 
     });
 
+    if (output === '') {
+        document.querySelector('.no-more-info').innerHTML = `<p class="no-more-info-text">No more hourly forecast for today. Please click 'tomorrow' button for tomorrow's hourly weather forecast.</p>`;
+    }
 
     document.querySelector('#accordionPanelsToday').innerHTML = output;
     document.querySelector('#accordionHourlyTodayMobile .accordion-body').innerHTML = `<h4 id="date-header-today-mobile" class="date-header">Date: ${formattedDate}</h4>` + output;
@@ -273,6 +281,11 @@ async function getTomorrowHourlyWeather() {
                                 </div>
                                 <div class="col-md-6 weather-info-section">
                                     <p class="hourly-weather-info">Maximum Temperature: <span class="weather-value">${maximumTemperature}°C</span></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 weather-info-section">
+                                    <p class="hourly-weather-info d-md-none">Feels Like: <span class="weather-value">${tempFeelsLike}°C</span></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -434,6 +447,11 @@ async function getOvermorrowHourlyWeather() {
                             </div>
                             <div class="row">
                                 <div class="col-md-6 weather-info-section">
+                                    <p class="hourly-weather-info d-md-none">Feels Like: <span class="weather-value">${tempFeelsLike}°C</span></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 weather-info-section">
                                     <p class="hourly-weather-info">Humidity: <span class="weather-value">${humidity}%</span></p>
                                 </div>
                                 <div class="col-md-6 weather-info-section">
@@ -585,6 +603,11 @@ async function getNextMorrowHourlyWeather() {
                                 </div>
                                 <div class="col-md-6 weather-info-section">
                                     <p class="hourly-weather-info">Maximum Temperature: <span class="weather-value">${maximumTemperature}°C</span></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 weather-info-section">
+                                    <p class="hourly-weather-info d-md-none">Feels Like: <span class="weather-value">${tempFeelsLike}°C</span></p>
                                 </div>
                             </div>
                             <div class="row">

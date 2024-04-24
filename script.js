@@ -1,4 +1,5 @@
-const apiKey = "189e9fd9c8b15d29e1d54333f28b46c3"
+/* const apiKey = "189e9fd9c8b15d29e1d54333f28b46c3" */
+var apiKey = config.API_KEY;
 const apiURL = "https://api.openweathermap.org/data/2.5/weather?q=Semenyih&units=metric"
 const hourlyApiURL = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q=Semenyih&units=metric"
 
@@ -250,6 +251,11 @@ async function getCurrentHourlyWeather() {
                                 </div>
                                 <div class="col-md-6 weather-info-section">
                                     <p class="hourly-weather-info">Maximum Temperature: <span class="weather-value">${maximumTemperature}°C</span></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 weather-info-section">
+                                    <p class="hourly-weather-info d-md-none">Feels Like: <span class="weather-value">${tempFeelsLike}°C</span></p>
                                 </div>
                             </div>
                             <div class="row">
