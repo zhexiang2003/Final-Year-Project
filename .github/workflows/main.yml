@@ -18,4 +18,4 @@ jobs:
           branch: gh-pages
           folder: .
         env:
-          API_KEY: ${189e9fd9c8b15d29e1d54333f28b46c3}
+          API_KEY: ${{ secrets.API_KEY }}
