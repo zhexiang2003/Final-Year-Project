@@ -1,6 +1,4 @@
-require('dotenv').config();
-
-const apiKey = process.env.API_KEY;
+var apiKey = process.env.API_KEY;
 const apiURL = "https://api.openweathermap.org/data/2.5/weather?q=Semenyih&units=metric"
 const hourlyApiURL = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q=Semenyih&units=metric"
 
