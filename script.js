@@ -1,17 +1,6 @@
-/* const apiKey = process.env.API_KEY; */
-const Dotenv = require('dotenv-webpack');
-
-module.exports = {
-    //... other configs
-    plugins: [
-        new Dotenv()
-    ]
-};
-
 const apiURL = "https://api.openweathermap.org/data/2.5/weather?q=Semenyih&units=metric"
 const hourlyApiURL = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q=Semenyih&units=metric"
-require('dotenv').config();
-console.log(process.env);
+const apiKey = process.env.API_KEY;
 
 const scrollContainer = document.querySelector('.container-fluid.hourlyWeatherDisplay');
 const scrollLeftButton = document.querySelector('.carousel-control-prev');
