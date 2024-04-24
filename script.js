@@ -1,6 +1,6 @@
 const apiURL = "https://api.openweathermap.org/data/2.5/weather?q=Semenyih&units=metric"
 const hourlyApiURL = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q=Semenyih&units=metric"
-const apiKey = process.env.API_KEY;
+const apiKey = '189e9fd9c8b15d29e1d54333f28b46c3';
 
 const scrollContainer = document.querySelector('.container-fluid.hourlyWeatherDisplay');
 const scrollLeftButton = document.querySelector('.carousel-control-prev');
