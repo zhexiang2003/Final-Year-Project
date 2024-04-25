@@ -22,5 +22,7 @@ jobs:
         pip install requests pandas
 
     - name: Run script
-      run: python record_weather_to_csv.py
+      run: |
+        python record_weather_to_csv.py
+        cat Semenyih-weather-data.csv
 
