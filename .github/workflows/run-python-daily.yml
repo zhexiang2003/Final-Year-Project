@@ -2,16 +2,17 @@ name: Run Python script daily
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # This will run the script every day at 12:00 UTC
+    - cron: '0 12 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Check out repository code
+      uses: actions/checkout@v2
 
-    - name: Set up Python
+    - name: Set up Python environment
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
@@ -21,8 +22,5 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests pandas
 
-    - name: Run script
-      run: |
-        python record_weather_to_csv.py
-        cat Semenyih-weather-data.csv
-
+    - name: Run Python script
+      run: python path_to_your_script.py
