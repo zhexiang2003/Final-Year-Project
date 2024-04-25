@@ -24,3 +24,16 @@ jobs:
 
     - name: Run Python script
       run: python record_weather_to_csv.py
+
+    - name: Commit and push if it changed
+      run: |
+        git config --local user.email "hfyzy4@nottingham.edu.my"
+        git config --local user.name "hfyzy4"
+        git add Semenyih-weather-data.csv
+        if git diff --quiet HEAD; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update data"
+          git push
+        fi
+
