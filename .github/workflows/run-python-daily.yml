@@ -23,3 +23,4 @@ jobs:
 
     - name: Run script
       run: python record_weather_to_csv.py
+
