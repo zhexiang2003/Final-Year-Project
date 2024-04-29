@@ -27,8 +27,8 @@ jobs:
 
     - name: Commit and push if it changed
       run: |
-        git config --local user.email "hfyzy4@nottingham.edu.my"
-        git config --local user.name "hfyzy4"
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         git add Semenyih-weather-data.csv
         if git diff --quiet HEAD; then
           echo "No changes to commit"
