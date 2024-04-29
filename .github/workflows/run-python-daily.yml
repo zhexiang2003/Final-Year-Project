@@ -1,4 +1,4 @@
-name: Run Jupyter notebook
+name: Run Jupyter notebook test
 
 on:
   schedule:
