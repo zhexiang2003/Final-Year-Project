@@ -39,21 +39,13 @@
                             <a class="nav-link active" aria-current="page" href="Landing.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="hourlyWeather.html">Hourly Weather Forecast</a>
+                            <a class="nav-link active" href="hourlyWeather.html">Hourly Weather Forecast</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dailyWeather.html">Daily Weather Forecast</a>
+                            <a class="nav-link active" href="dailyWeather.html">Daily Weather Forecast</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown link
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="AI_prediction.html">AI Weather Prediction</a>
                         </li>
                     </ul>
                 </div>
@@ -82,46 +74,58 @@
 
     <div class="container-fluid desktop further-weather-info d-none d-md-block">
         <div class="row">
-            <div class="col-md-3 further-current-weather">
+            <div class="col-md-6 further-current-weather">
                 <i class="bi bi-sunrise"></i>
                 <h5 class="weather-category">Sunrise: <span id="sunrise-value"></span></h5>
             </div>
 
-            <div class="col-md-3 further-current-weather">
-                <i class="bi bi-thermometer-low"></i>
-                <h5 class="weather-category">Minimum Temperature: <span id="min-temp-value"></span< /h5>
-            </div>
-
-            <div class="col-md-3 further-current-weather">
-                <i class="bi bi-wind"></i>
-                <h5 class="weather-category">Wind Speed: <span id="wind-speed-value"></span< /h5>
-            </div>
-
-            <div class="col-md-3 further-current-weather">
-                <i class="bi bi-clouds"></i>
-                <h5 class="weather-category">Cloudiness: <span id="cloudiness-value"></span< /h5>
+            <div class="col-md-6 further-current-weather">
+                <i class="bi bi-sunrise"></i>
+                <h5 class="weather-category">Sunset: <span id="sunset-value"></span></h5>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3 further-current-weather">
-                <i class="bi bi-sunset"></i>
-                <h5 class="weather-category">Sunset: <span id="sunset-value"></span< /h5>
+                <i class="bi bi-thermometer"></i>
+                <h5 class="weather-category">Feels Like: <span id="feels-like-value"></span></h5>
+            </div>
+
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-thermometer-low"></i>
+                <h5 class="weather-category">Minimum Temperature: <span id="min-temp-value"></span></h5>
+            </div>
+
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-wind"></i>
+                <h5 class="weather-category">Wind Speed: <span id="wind-speed-value"></span></h5>
+            </div>
+
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-clouds"></i>
+                <h5 class="weather-category">Cloudiness: <span id="cloudiness-value"></span></h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 further-current-weather">
+                <i class="bi bi-moisture"></i>
+                <h5 class="weather-category">Humidity: <span id="humidity-value"></span></h5>
             </div>
 
             <div class="col-md-3 further-current-weather">
                 <i class="bi bi-thermometer-high"></i>
-                <h5 class="weather-category">Maximum Temperature: <span id="max-temp-value"></span< /h5>
+                <h5 class="weather-category">Maximum Temperature: <span id="max-temp-value"></span></h5>
             </div>
 
             <div class="col-md-3 further-current-weather">
                 <i class="material-icons">compress</i>
-                <h5 class="weather-category">Pressure: <span id="pressure-value"></span< /h5>
+                <h5 class="weather-category">Pressure: <span id="pressure-value"></span></h5>
             </div>
 
             <div class="col-md-3 further-current-weather">
                 <i class="bi bi-eye"></i>
-                <h5 class="weather-category">Visibility: <span id="visibility-value"></span< /h5>
+                <h5 class="weather-category">Visibility: <span id="visibility-value"></span></h5>
             </div>
         </div>
     </div>
@@ -135,43 +139,55 @@
 
             <div class="col-sm-6 further-current-weather">
                 <i class="bi bi-sunset"></i>
-                <h5 class="weather-category">Sunset: <span id="sunset-value-mobile"></span< /h5>
+                <h5 class="weather-category">Sunset: <span id="sunset-value-mobile"></span></h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 further-current-weather">
+                <i class="bi bi-thermometer"></i>
+                <h5 class="weather-category">Feels Like: <span id="feels-like-value-mobile"></span></h5>
+            </div>
+
+            <div class="col-sm-6 further-current-weather">
+                <i class="bi bi-moisture"></i>
+                <h5 class="weather-category">Humidity: <span id="humidity-value-mobile"></span></h5>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-6 further-current-weather">
                 <i class="bi bi-thermometer-low"></i>
-                <h5 class="weather-category">Minimum Temperature: <span id="min-temp-value-mobile"></span< /h5>
+                <h5 class="weather-category">Minimum Temperature: <span id="min-temp-value-mobile"></span></h5>
             </div>
 
             <div class="col-sm-6 further-current-weather">
                 <i class="bi bi-thermometer-high"></i>
-                <h5 class="weather-category">Maximum Temperature: <span id="max-temp-value-mobile"></span< /h5>
+                <h5 class="weather-category">Maximum Temperature: <span id="max-temp-value-mobile"></span></h5>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-6 further-current-weather">
                 <i class="bi bi-wind"></i>
-                <h5 class="weather-category">Wind Speed: <span id="wind-speed-value-mobile"></span< /h5>
+                <h5 class="weather-category">Wind Speed: <span id="wind-speed-value-mobile"></span></h5>
             </div>
 
             <div class="col-sm-6 further-current-weather">
                 <i class="bi bi-clouds"></i>
-                <h5 class="weather-category">Cloudiness: <span id="cloudiness-value-mobile"></span< /h5>
+                <h5 class="weather-category">Cloudiness: <span id="cloudiness-value-mobile"></span></h5>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-6 further-current-weather">
                 <i class="material-icons">compress</i>
-                <h5 class="weather-category">Pressure: <span id="pressure-value-mobile"></span< /h5>
+                <h5 class="weather-category">Pressure: <span id="pressure-value-mobile"></span></h5>
             </div>
 
-            <div class="col-sm-6 further-current-weather">
+            <div class="col-sm-6 further-current-weather right-col">
                 <i class="bi bi-eye"></i>
-                <h5 class="weather-category">Visibility: <span id="visibility-value-mobile"></span< /h5>
+                <h5 class="weather-category">Visibility: <span id="visibility-value-mobile"></span></h5>
             </div>
         </div>
     </div>
@@ -189,9 +205,17 @@
 
         </div>
 
-        <div style="text-align: center;">
-            <a href="hourlyWeather.html" class="more-info-button">Click here for more hourly forecast</a>
+        <div class="more-info-section">
+            <div style="text-align: center;">
+                <a href="hourlyWeather.html" class="more-info-button">Click here for more hourly forecast</a>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="dailyWeather.html" class="more-info-button" id="more-daily-button">Click here for daily
+                    forecast</a>
+            </div>
         </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

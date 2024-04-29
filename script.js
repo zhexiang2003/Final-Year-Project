@@ -91,19 +91,23 @@ async function checkWeather() {
     document.querySelector("#min-temp-value").innerHTML = (data.main.temp_min).toFixed(1) + '°C';
     document.querySelector("#wind-speed-value").innerHTML = data.wind.speed + 'm/s';
     document.querySelector("#cloudiness-value").innerHTML = data.clouds.all + '%';
+    document.querySelector("#feels-like-value").innerHTML = (data.main.feels_like).toFixed(1) + '°C';
     document.querySelector("#sunrise-value-mobile").innerHTML = sunriseTime;
     document.querySelector("#min-temp-value-mobile").innerHTML = (data.main.temp_min).toFixed(1) + '°C';
     document.querySelector("#wind-speed-value-mobile").innerHTML = data.wind.speed + 'm/s';
     document.querySelector("#cloudiness-value-mobile").innerHTML = data.clouds.all + '%';
+    document.querySelector("#feels-like-value-mobile").innerHTML = (data.main.feels_like).toFixed(1) + '°C';
 
     document.querySelector("#sunset-value").innerHTML = sunsetTime;
     document.querySelector("#max-temp-value").innerHTML = (data.main.temp_max).toFixed(1) + '°C';
     document.querySelector("#pressure-value").innerHTML = data.main.pressure + 'hPa';
     document.querySelector("#visibility-value").innerHTML = (data.visibility / 1000) + 'km';
+    document.querySelector("#humidity-value").innerHTML = data.main.humidity + '%';
     document.querySelector("#sunset-value-mobile").innerHTML = sunsetTime;
     document.querySelector("#max-temp-value-mobile").innerHTML = (data.main.temp_max).toFixed(1) + '°C';
     document.querySelector("#pressure-value-mobile").innerHTML = data.main.pressure + 'hPa';
     document.querySelector("#visibility-value-mobile").innerHTML = (data.visibility / 1000) + ' km';
+    document.querySelector("#humidity-value-mobile").innerHTML = data.main.humidity + '%';
 }
 
 function getCurrentTime() {
@@ -142,7 +146,7 @@ async function getCurrentHourlyWeather() {
     let currentDay = new Date().getDate();
     let currentHour = new Date().getHours();
 
-    if (currentHour === 24) {
+    if (currentHour === 23) {
         currentDay++;
     }
 

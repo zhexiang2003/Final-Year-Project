@@ -36,10 +36,11 @@ weather_data = {
     'humidity': forecast['humidity'],
     'windspeed': forecast['speed'],
     'cloudcover': forecast['clouds'],
-    'visibility': data_visibility['visibility'] // 1000
+    'visibility': data_visibility['visibility'] // 1000,
+    'precipprob': forecast['pop'] * 100
 }
 
-fieldnames = ['name', 'datetime', 'sunrise', 'sunset', 'temp', 'tempmax', 'tempmin', 'feelslike', 'humidity', 'windspeed', 'cloudcover', 'visibility']
+fieldnames = ['name', 'datetime', 'sunrise', 'sunset', 'temp', 'tempmax', 'tempmin', 'feelslike', 'humidity', 'windspeed', 'cloudcover', 'visibility', 'precipprob']
 
 # Create a CSV file and write the headers and data into the file
 with open('Semenyih-weather-data.csv', 'r', newline='') as f:

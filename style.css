@@ -15,7 +15,12 @@ body {
     color: #10263B;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Circular', Arial, Helvetica, sans-serif !important;
 }
 
@@ -25,12 +30,20 @@ header {
     top: 0px;
     width: 100%;
     z-index: 999;
-    background-color: #fff;
 }
 
 img {
     max-width: 100%;
     height: auto;
+}
+
+nav.navbar {
+    background-color: #fff !important;
+}
+
+.collapse.navbar-collapse .nav-link,
+.collapse.navbar-collapse .nav-link.active {
+    color: #10263B !important;
 }
 
 /* Landing.html */
@@ -104,11 +117,13 @@ nav.navbar {
 .weather-info {
     padding: 2rem;
     margin: auto 0;
-    background-color: rgba(0, 0, 0, 0.5); /* black background with 50% opacity */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* black background with 50% opacity */
     color: #fff;
     width: max-content;
     /* backdrop-filter: blur(8px); */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* horizontal offset, vertical offset, blur radius, color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* horizontal offset, vertical offset, blur radius, color */
 }
 
 .weather-info h1 {
@@ -127,7 +142,7 @@ h1.current-weather-condition {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.scroll-down .bi.bi.bi-chevron-double-down{
+.scroll-down .bi.bi.bi-chevron-double-down {
     margin-right: 0;
 }
 
@@ -156,7 +171,8 @@ h1.current-weather-condition {
 
 .container-fluid.further-weather-info {
     width: 90%;
-    border: none; /* Remove the border around the container */
+    border: none;
+    /* Remove the border around the container */
     padding: 2.5rem;
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(8px);
@@ -178,11 +194,13 @@ h1.current-weather-condition {
 }
 
 .desktop .further-current-weather:last-child {
-    border-right: none; /* Remove the right border from the last cell in each row */
+    border-right: none;
+    /* Remove the right border from the last cell in each row */
 }
 
 .desktop .row:last-child .further-current-weather {
-    border-bottom: none; /* Remove the bottom border from the last row */
+    border-bottom: none;
+    /* Remove the bottom border from the last row */
 }
 
 /* #pressure-thermometer {
@@ -238,7 +256,10 @@ h1.current-weather-condition {
     width: 100%;
 }
 
-.weather-hour-group, .temp-feels-like-group, .chance-of-prep-group, .weather-condition-group {
+.weather-hour-group,
+.temp-feels-like-group,
+.chance-of-prep-group,
+.weather-condition-group {
     display: flex;
     align-items: center;
 }
@@ -392,6 +413,12 @@ h5.weather-description-text.d-sm-none {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e") !important;
 }
 
+.more-info-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .more-info-button {
     display: inline-block;
     background-color: #10263B;
@@ -457,7 +484,8 @@ h5.weather-description-text.d-sm-none {
         margin: 10px auto;
     }
 
-    .mobile .further-current-weather .bi, .material-icons {
+    .mobile .further-current-weather .bi,
+    .material-icons {
         font-size: 28px;
         margin-left: auto;
         margin-right: auto;
@@ -499,6 +527,10 @@ h5.weather-description-text.d-sm-none {
         border-bottom: 1px solid #10263B;
     }
 
+    .mobile .row:last-child .further-current-weather.right-col {
+        border-bottom: 0;
+    }
+
     .university-logo {
         width: 176px;
         aspect-ratio: auto 176 / 65;
@@ -520,12 +552,22 @@ h5.weather-description-text.d-sm-none {
         padding: 5px;
     }
 
-    h4.hourly-date, h4.daily-date {
+    h4.hourly-date,
+    h4.daily-date {
         font-size: 1.2rem;
     }
 
-    h1.current-weather-condition, h1.current-weather-condition-mobile {
+    h1.current-weather-condition,
+    h1.current-weather-condition-mobile {
         margin-bottom: 10px;
+    }
+
+    .more-info-section {
+        display: block;
+    }
+
+    #more-daily-button {
+        margin-top: 0;
     }
 }
 
@@ -541,7 +583,7 @@ h5.weather-description-text.d-sm-none {
     }
 
     .bi.bi-sun,
-    .bi-cloud, 
+    .bi-cloud,
     .bi-cloud-rain {
         margin-right: 0.3rem;
     }
@@ -580,7 +622,10 @@ h5.weather-description-text.d-sm-none {
     color: white;
 }
 
-#todayDate, #tmrDate, #overmorrowDate, #nextMorrowDate {
+#todayDate,
+#tmrDate,
+#overmorrowDate,
+#nextMorrowDate {
     white-space: nowrap;
 }
 
@@ -599,7 +644,7 @@ h5.weather-description-text.d-sm-none {
     margin-right: 2.6vw;
 }
 
-#hourlyWeatherFile-Desktop .chance-of-prep-group{
+#hourlyWeatherFile-Desktop .chance-of-prep-group {
     margin-left: -2.6vw;
 }
 
@@ -622,7 +667,8 @@ h5.weather-description-text.d-sm-none {
     margin: 0 auto;
 }
 
-p.daily-weather-info, p.weather-value {
+p.daily-weather-info,
+p.weather-value {
     margin-bottom: 0;
 }
 
@@ -633,12 +679,12 @@ p.daily-weather-info, p.weather-value {
         flex-direction: row;
         align-items: center;
     }
-    
+
     #accordionHourlyTodayMobile .accordion .row p.daily-weather-info {
         border-bottom: 1px solid #000;
         padding: 11px 0 10px;
     }
-    
+
     #accordionHourlyTodayMobile .accordion .row.last-row p.daily-weather-info {
         border-bottom: 0px solid;
     }
@@ -660,18 +706,20 @@ p.daily-weather-info, p.weather-value {
     margin-right: 2.6vw;
 }
 
-#accordionDaily .day-temperature, #accordionDaily .night-temperature {
+#accordionDaily .day-temperature,
+#accordionDaily .night-temperature {
     display: flex;
     align-items: center;
     flex-direction: row;
 }
 
-#accordionDaily .day-temperature .bi-sun, .night-temperature .bi-moon {
+#accordionDaily .day-temperature .bi-sun,
+.night-temperature .bi-moon {
     margin-right: 0.5rem;
 }
 
 #accordionDaily .current-day-date {
-    text-align: center; 
+    text-align: center;
     margin-right: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -688,7 +736,7 @@ p.daily-weather-info, p.weather-value {
 #accordionDaily .temp-feels-like-group .temp-feels-like-day {
     margin-top: 0;
     margin-bottom: 0;
-} 
+}
 
 #accordionDaily .temp-feels-like-group .temp-feels-like-night {
     margin-top: 10px;
@@ -699,7 +747,8 @@ p.daily-weather-info, p.weather-value {
     margin-left: -2.6vw;
 }
 
-p.daily-weather-info, p.weather-value {
+p.daily-weather-info,
+p.weather-value {
     margin-bottom: 0;
 }
 
@@ -725,8 +774,8 @@ p.daily-weather-info, p.weather-value {
 
     #accordionDaily .temp-feels-like-group .temp-feels-like-day {
         font-size: 16px;
-    } 
-    
+    }
+
     #accordionDaily .temp-feels-like-group .temp-feels-like-night {
         font-size: 16px;
     }
@@ -751,5 +800,62 @@ p.daily-weather-info, p.weather-value {
 
     #accordionDaily .row.last-row p#md-hide-border.daily-weather-info {
         border-bottom: 0px solid !important;
+    }
+}
+
+/* AI_prediction.html */
+
+#AI-prediction .further-current-weather:first-child {
+    border-right: 1px solid #10263B;
+}
+
+#AI-prediction .further-current-weather {
+    text-align: center;
+    padding: 1.618rem;
+    border-bottom: 1px solid #10263B;
+}
+
+#AI-prediction .further-current-weather h5.weather-category {
+    margin: 10px auto;
+}
+
+#AI-prediction .further-current-weather .bi,
+#AI-prediction .material-icons {
+    font-size: 28px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#AI-prediction .row:last-child .further-current-weather {
+    border-bottom: 0px;
+}
+
+@media (max-width: 575px) {
+    #AI-prediction .container-fluid.further-weather-info {
+        padding: 1.618rem;
+    }
+
+    #AI-prediction .further-current-weather {
+        border-right: none;
+        border-bottom: 1px #10263B solid;
+        padding: 1rem;
+    }
+
+    #AI-prediction .further-current-weather:first-child {
+        border-right: none;
+    }
+
+    #AI-prediction .row:last-child .further-current-weather {
+        border-bottom: 1px solid #10263B;
+    }
+
+    #AI-prediction .row:last-child .further-current-weather.right-col {
+        border-bottom: 0;
+    }
+}
+
+@media (max-width: 767px){
+    #AI-prediction .actual-forecast {
+        margin-top: 1.618rem;
     }
 }

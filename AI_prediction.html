@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>AI Weather Prediction | University of Nottingham Malaysia</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet" />
+    <link crossorigin="anonymous"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet" />
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://pyscript.net/releases/2024.1.1/core.css" rel="stylesheet" />
+    <script src="script4.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="Landing.html">
+                    <img alt="University Logo" class="university-logo" src="Images/University-logo.svg" />
+                </a>
+                <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler" data-bs-target="#navbarNavDropdown" data-bs-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse navbar-desktop" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a aria-current="page" class="nav-link active" href="Landing.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="hourlyWeather.html">Hourly Weather Forecast</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dailyWeather.html">Daily Weather Forecast</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h1 class="weather-forecast-title" style="margin-top: 0;">AI Weather Prediction</h1>
+    <p class="caption d-none d-md-block" style="padding: 0 1.5rem;">This page is presenting the side-by-side comparison of the weather
+        forecast. <br /><br /> The AI-generated weather prediction is on the left side by Random Forest Regression, while the actual weather forecast is presented on the right side. </p>
+    
+    <p class="caption d-md-none" style="padding: 0 1.5rem;">This page is presenting the side-by-side comparison of the weather
+        forecast. <br /><br /> The AI-generated weather prediction is on the top side by Random Forest Regression, while the actual weather forecast is presented on the bottom side. </p>
+
+    <div class="container-fluid">
+        <div class="row" id="AI-prediction">
+            <div class="col-md-6">
+                <div class="container-fluid further-weather-info">
+                    <h2 style="margin-top: 0;">Random Forest Regression</h2>
+                    <h3>Date: <span class="prediction-date">30 April 2024</span></h3>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-sunrise"></i>
+                            <h5 class="weather-category">Sunrise: <span id="sunrise-value-predict">07:03:22</span></h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-sunset"></i>
+                            <h5 class="weather-category">Sunset: <span id="sunset-value-predict">19:16:20</span></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-thermometer"></i>
+                            <h5 class="weather-category">Temperature: <span
+                                    id="temperature-value-predict">32.61</span>°C
+                            </h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-thermometer"></i>
+                            <h5 class="weather-category">Feels Like: <span id="feels-like-value-predict">39.01</span>°C
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-thermometer-low"></i>
+                            <h5 class="weather-category">Minimum Temperature: <span
+                                    id="min-temp-value-predict">25.41</span>°C
+                            </h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-thermometer-high"></i>
+                            <h5 class="weather-category">Maximum Temperature: <span
+                                    id="max-temp-value-predict">34.36</span>°C
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-wind"></i>
+                            <h5 class="weather-category">Wind Speed: <span id="wind-speed-value-predict">2.44m/s</span>
+                            </h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-clouds"></i>
+                            <h5 class="weather-category">Cloudiness: <span id="cloudiness-value-predict">77.57%</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-moisture"></i>
+                            <h5 class="weather-category">Humidity: <span id="humidity-value-predict">59.63%</span></h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather right-col">
+                            <i class="bi bi-eye"></i>
+                            <h5 class="weather-category">Visibility: <span id="visibility-value-predict">10.00km</span>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 actual-forecast">
+                <div class="container-fluid further-weather-info">
+                    <h2 style="margin-top: 0;">Actual Forecast</h2>
+                    <h3 class="actual-date"></h3>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-sunrise"></i>
+                            <h5 class="weather-category">Sunrise: <span id="sunrise-value"></span></h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-sunset"></i>
+                            <h5 class="weather-category">Sunset: <span id="sunset-value"></span></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-thermometer"></i>
+                            <h5 class="weather-category">Temperature: <span id="temperature-value"></span></h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-thermometer"></i>
+                            <h5 class="weather-category">Feels Like: <span id="feels-like-value"></span></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-thermometer-low"></i>
+                            <h5 class="weather-category">Minimum Temperature: <span id="min-temp-value"></span></h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-thermometer-high"></i>
+                            <h5 class="weather-category">Maximum Temperature: <span id="max-temp-value"></span></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-wind"></i>
+                            <h5 class="weather-category">Wind Speed: <span id="wind-speed-value"></span></h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-clouds"></i>
+                            <h5 class="weather-category">Cloudiness: <span id="cloudiness-value"></span></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 further-current-weather">
+                            <i class="bi bi-moisture"></i>
+                            <h5 class="weather-category">Humidity: <span id="humidity-value"></span></h5>
+                        </div>
+                        <div class="col-sm-6 further-current-weather right-col">
+                            <i class="bi bi-eye"></i>
+                            <h5 class="weather-category">Visibility: <span id="visibility-value"></span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

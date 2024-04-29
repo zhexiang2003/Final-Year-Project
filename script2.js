@@ -171,13 +171,11 @@ async function getTomorrowHourlyWeather() {
 
     let output = '';
     let currentTime = Math.floor(new Date().getTime() / 1000);
-    let currentDay = new Date().getDate();
-    let tomorrow = currentDay + 1;
     let currentHour = new Date().getHours();
 
     let dateHeader = new Date();
-    let dayHeader = dateHeader.getDate();
-    let tomorrowDay = dayHeader + 1;
+    dateHeader.setDate(dateHeader.getDate() + 1);
+    let tomorrowDay = dateHeader.getDate();
     let monthHeader = dateHeader.toLocaleString('default', { month: 'long' });
     let yearHeader = dateHeader.getFullYear();
     let formattedDate = `${tomorrowDay} ${monthHeader} ${yearHeader}`;
@@ -222,7 +220,7 @@ async function getTomorrowHourlyWeather() {
         let weatherCondition = forecast.weather[0].main;
         let backgroundImage = '';
 
-        if (forecastDay !== tomorrow) {
+        if (forecastDay !== tomorrowDay) {
             return;
         }
 
@@ -333,13 +331,11 @@ async function getOvermorrowHourlyWeather() {
 
     let output = '';
     let currentTime = Math.floor(new Date().getTime() / 1000);
-    let currentDay = new Date().getDate();
-    let overmorrow = currentDay + 2;
     let currentHour = new Date().getHours();
 
     let dateHeader = new Date();
-    let dayHeader = dateHeader.getDate();
-    let overmorrowDay = dayHeader + 2;
+    dateHeader.setDate(dateHeader.getDate() + 2);
+    let overmorrowDay = dateHeader.getDate();
     let monthHeader = dateHeader.toLocaleString('default', { month: 'long' });
     let yearHeader = dateHeader.getFullYear();
     let formattedDate = `${overmorrowDay} ${monthHeader} ${yearHeader}`;
@@ -384,7 +380,7 @@ async function getOvermorrowHourlyWeather() {
         let weatherCondition = forecast.weather[0].main;
         let backgroundImage = '';
 
-        if (forecastDay !== overmorrow) {
+        if (forecastDay !== overmorrowDay) {
             return;
         }
 
@@ -493,13 +489,11 @@ async function getNextMorrowHourlyWeather() {
 
     let output = '';
     let currentTime = Math.floor(new Date().getTime() / 1000);
-    let currentDay = new Date().getDate();
-    let nextMorrow = currentDay + 3;
     let currentHour = new Date().getHours();
 
     let dateHeader = new Date();
-    let dayHeader = dateHeader.getDate();
-    let nextMorrowDay = dayHeader + 3;
+    dateHeader.setDate(dateHeader.getDate() + 3);
+    let nextMorrowDay = dateHeader.getDate();
     let monthHeader = dateHeader.toLocaleString('default', { month: 'long' });
     let yearHeader = dateHeader.getFullYear();
     let formattedDate = `${nextMorrowDay} ${monthHeader} ${yearHeader}`;
@@ -544,7 +538,7 @@ async function getNextMorrowHourlyWeather() {
         let weatherCondition = forecast.weather[0].main;
         let backgroundImage = '';
 
-        if (forecastDay !== nextMorrow) {
+        if (forecastDay !== nextMorrowDay) {
             return;
         }
 

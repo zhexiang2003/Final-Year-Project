@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Weather Forecast | University of Nottingham Malaysia</title>
+    <title>Daily Weather Forecast | University of Nottingham Malaysia</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
@@ -43,17 +43,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="dailyWeather.html">Daily Weather Forecast</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown link
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -64,9 +53,21 @@
     <h1 class="weather-forecast-title" style="margin-top: 0;">Daily Weather Forecast</h1>
 
     <div class="container-fluid daily-weather" id="daily-weather-desktop">
+        <p class="caption">Select a day by tapping the header to view daily weather forecast.</p>
 
         <div class="accordion" id="accordionDaily">
         
+        </div>
+
+        <div class="more-info-section">
+            <div style="text-align: center;">
+                <a href="Landing.html" class="more-info-button">Click here to home</a>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="hourlyWeather.html" class="more-info-button" id="more-daily-button">Click here for hourly
+                    forecast</a>
+            </div>
         </div>
 
     </div>
