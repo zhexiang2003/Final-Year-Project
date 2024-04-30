@@ -25,11 +25,3 @@ jobs:
 
     - name: Run notebook
       run: jupyter nbconvert --execute random-forest.ipynb
-
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add weather.html
-        git commit -m "Update weather.html"
-        git push
