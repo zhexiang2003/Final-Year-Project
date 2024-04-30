@@ -157,10 +157,18 @@ async function getTodayHourlyWeather() {
 
     if (output === '') {
         document.querySelector('.no-more-info').innerHTML = `<p class="no-more-info-text">No more hourly forecast for today. Please click 'tomorrow' button for tomorrow's hourly weather forecast.</p>`;
+
+        document.querySelector('#accordionHourlyTodayMobile .accordion-body').innerHTML = `
+            <h4 id="date-header-today-mobile" class="date-header">Date: ${formattedDate}</h4>
+
+            <p class="no-more-info-text">No more hourly forecast for today. Please press on 'tomorrow' button for tomorrow's hourly weather forecast</p>
+        `;
+    } else {
+        document.querySelector('#accordionHourlyTodayMobile .accordion-body').innerHTML = `<h4 id="date-header-today-mobile" class="date-header">Date: ${formattedDate}</h4>` + output;
     }
 
     document.querySelector('#accordionPanelsToday').innerHTML = output;
-    document.querySelector('#accordionHourlyTodayMobile .accordion-body').innerHTML = `<h4 id="date-header-today-mobile" class="date-header">Date: ${formattedDate}</h4>` + output;
+    
     document.querySelector('#date-header-today').innerHTML = `Date: ${formattedDate}`;
 
 }
@@ -171,6 +179,7 @@ async function getTomorrowHourlyWeather() {
 
     let output = '';
     let currentTime = Math.floor(new Date().getTime() / 1000);
+    let currentDay = new Date().getDate();
     let currentHour = new Date().getHours();
 
     let dateHeader = new Date();
@@ -331,6 +340,7 @@ async function getOvermorrowHourlyWeather() {
 
     let output = '';
     let currentTime = Math.floor(new Date().getTime() / 1000);
+    let currentDay = new Date().getDate();
     let currentHour = new Date().getHours();
 
     let dateHeader = new Date();
@@ -489,6 +499,7 @@ async function getNextMorrowHourlyWeather() {
 
     let output = '';
     let currentTime = Math.floor(new Date().getTime() / 1000);
+    let currentDay = new Date().getDate();
     let currentHour = new Date().getHours();
 
     let dateHeader = new Date();
