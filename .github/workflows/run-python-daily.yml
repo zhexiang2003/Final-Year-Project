@@ -23,5 +23,5 @@ jobs:
         pip install jupyter numpy pandas matplotlib scikit-learn beautifulsoup4
         # Add any other dependencies your notebook needs
 
-    - name: Run notebook
-      run: jupyter nbconvert --execute random-forest.ipynb
+    - name: Run Python code
+      run: py random-forest.py
