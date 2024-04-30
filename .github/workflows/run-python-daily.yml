@@ -24,4 +24,4 @@ jobs:
         # Add any other dependencies your notebook needs
 
     - name: Run Python code
-      run: py random-forest.py
+      run: python random-forest.py
