@@ -189,6 +189,8 @@ async function getCurrentHourlyWeather() {
             return;
         }
 
+        /* Rest of the code */
+
         /* 
         let weatherIconClass;
 

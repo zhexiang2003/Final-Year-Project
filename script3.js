@@ -48,6 +48,8 @@ async function getDailyForecast() {
         let pressure = forecast.pressure;
         let prepVolume = forecast.rain;
 
+        /* Rest of the code is here */
+
         output += 
         `
         <div class="accordion-item">
