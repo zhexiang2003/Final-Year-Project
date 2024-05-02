@@ -20,14 +20,6 @@ const weatherImage = {
     'Night': 'Images/University-Night-2.png'
 }
 
-/* scrollLeftButton.addEventListener('click', () => {
-    scrollContainer.scrollLeft -= 600;
-});
-
-scrollRightButton.addEventListener('click', () => {
-    scrollContainer.scrollLeft += 600;
-}); */
-
 function updateNavBarHeight() {
     var navBar = document.querySelector('.navbar');
     var navbarHeight = navBar.offsetHeight;
@@ -172,34 +164,19 @@ async function getCurrentHourlyWeather() {
         let unixTimestamp = forecast.dt; // Get the date and time of the forecast
         let date = new Date(unixTimestamp * 1000);
         let forecastDay = date.getDate();
-        let checkHour = date.getHours();
+
         let hours = ("0" + date.getHours()).slice(-2);
         let minutes = ("0" + date.getMinutes()).slice(-2);
         let forecastTime = hours + ":" + minutes;
-        let timeDifferenceHours = (unixTimestamp - currentTime) / 3600;
+
         let day = date.getDate();
         let month = date.toLocaleString('default', { month: 'long' });
         let year = date.getFullYear();
         let formattedDate = `${day} ${month} ${year}`;
 
-        let weatherCondition = forecast.weather[0].main;
-        let backgroundImage = '';
-
         if (forecastDay !== currentDay) {
             return;
         }
-
-        /* Rest of the code */
-
-        /* 
-        let weatherIconClass;
-
-        if (forecast.weather[0].main === 'Clear') {
-            weatherIconClass = (checkHour >= 18 || checkHour < 6) ? 'bi bi-moon-stars' : 'bi bi-sun';
-        } else {
-            weatherIconClass = weatherIcons[forecast.weather[0].main] || 'bi bi-question';
-        }
-        */
 
         output += `
             <div class="accordion-item">
