@@ -1,9 +1,11 @@
 <script setup>
-
+import Button from "primevue/button"
 </script>
 
+
 <template>
-  <nav class="text-5xl text-[#0000FF]">
-    Hello World
-  </nav>
+  <div class="card flex justify-center">
+      <Button label="Verify" class="bg-[]" />
+  </div>
 </template>
+
